@@ -1,0 +1,88 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "pip-services.infrastructure.email.version1";
+option java_outer_classname = "EmailProtoV1";
+option objc_class_prefix = "EMAIL_CMD_V1";
+
+package email_v1;
+
+message ErrorDescription {
+  string type = 1;
+  string category = 2;
+  string code = 3;
+  string correlation_id = 4;
+  string status = 5;
+  string message = 6;
+  string cause = 7;
+  string stack_trace = 8;
+  map<string, string> details = 9;
+}
+
+message EmailMessage {
+    string from = 1;
+    string cc = 2;
+    string bcc = 3;
+    string to = 4;
+    string reply_to = 5;
+    string subject = 6;
+    string text = 7;
+    string html = 8;
+}
+
+message EmailRecipient {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+    string language = 4;
+}
+
+// The email service definition.
+service Email {
+  rpc send_message (EmailMessageRequest) returns (EmailEmptyReply) {}
+  rpc send_message_to_recipient (EmailMessageWithRecipientRequest) returns (EmailEmptyReply) {}
+  rpc send_message_to_recipients (EmailMessageWithRecipientsRequest) returns (EmailEmptyReply) {}
+}
+
+// The request message containing the email message request.
+message EmailMessageRequest {
+  string correlation_id = 1;
+  EmailMessage message = 2;
+  map<string,string> parameters = 3;
+}
+
+// The request message containing the email message with recipient request.
+message EmailMessageWithRecipientRequest {
+  string correlation_id = 1;
+  EmailMessage message = 2;
+  map<string,string> parameters = 3;
+  EmailRecipient recipient = 4;
+}
+
+// The request message containing the email message with recipients request.
+message EmailMessageWithRecipientsRequest {
+  string correlation_id = 1;
+  EmailMessage message = 2;
+  map<string,string> parameters = 3;
+  repeated EmailRecipient recipients = 4;
+}
+
+// The response message containing the email empty response
+message EmailEmptyReply {
+  ErrorDescription error = 1;
+}
+

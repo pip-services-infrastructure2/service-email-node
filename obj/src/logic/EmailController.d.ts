@@ -1,0 +1,38 @@
+import { ConfigParams } from 'pip-services3-commons-nodex';
+import { IConfigurable } from 'pip-services3-commons-nodex';
+import { IReferences } from 'pip-services3-commons-nodex';
+import { IReferenceable } from 'pip-services3-commons-nodex';
+import { ICommandable } from 'pip-services3-commons-nodex';
+import { CommandSet } from 'pip-services3-commons-nodex';
+import { IOpenable } from 'pip-services3-commons-nodex';
+import { EmailMessageV1 } from '../data/version1/EmailMessageV1';
+import { EmailRecipientV1 } from '../data/version1/EmailRecipientV1';
+import { IEmailController } from './IEmailController';
+export declare class EmailController implements IConfigurable, IReferenceable, ICommandable, IOpenable, IEmailController {
+    private static _defaultConfig;
+    private _config;
+    private _messageFrom;
+    private _messageCc;
+    private _messageBcc;
+    private _messageReplyTo;
+    private _parameters;
+    private _connection;
+    private _connectionResolver;
+    private _credential;
+    private _credentialResolver;
+    private _transport;
+    private _commandSet;
+    private _disabled;
+    configure(config: ConfigParams): void;
+    setReferences(references: IReferences): void;
+    getCommandSet(): CommandSet;
+    isOpen(): boolean;
+    open(correlationId: string): Promise<void>;
+    close(correlationId: string): Promise<void>;
+    private getLanguageTemplate;
+    private renderTemplate;
+    sendMessage(correlationId: string, message: EmailMessageV1, parameters: ConfigParams): Promise<void>;
+    private makeRecipientParameters;
+    sendMessageToRecipient(correlationId: string, recipient: EmailRecipientV1, message: EmailMessageV1, parameters: ConfigParams): Promise<void>;
+    sendMessageToRecipients(correlationId: string, recipients: EmailRecipientV1[], message: EmailMessageV1, parameters: ConfigParams): Promise<void>;
+}
