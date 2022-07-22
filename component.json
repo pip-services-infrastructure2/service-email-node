@@ -4,7 +4,7 @@
     "language": "node",
     "version": "1.0.0",
     "build": 0,
-    "registry": "registry.gitlab.com/eic-templates",
+    "registry": "pipdevs",
     "artifacts": [
         {
             "name": "<name>",
