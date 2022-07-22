@@ -83,7 +83,7 @@ jobs:
 
   # Measure job
   measure:
-    needs: release
+    needs: clean
     if: always()
     runs-on: ubuntu-18.04
 
