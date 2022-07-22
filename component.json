@@ -1,6 +1,24 @@
 {
-    "name": "service-email-node",
+    "name":  "service-example-node",
+    "type": "microservice",
+    "language": "node",
     "version": "1.0.0",
-    "registry": "pipdevs",
-    "build": 0
+    "build": 0,
+    "registry": "registry.gitlab.com/eic-templates",
+    "artifacts": [
+        {
+            "name": "<name>",
+            "tag": "latest",
+            "type": "docker"
+        },
+        {
+            "name": "<name>",
+            "tag": "<version>-<build>",
+            "type": "docker"
+        },
+        {
+            "name":  "<name>",
+            "type": "npm"
+        }
+    ]
 }

@@ -1,12 +1,11 @@
 version: '3.3'
 
 services:
-
-  test:
+  app:
+    image: ${IMAGE:-pipdevs/app}
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    image: ${IMAGE:-pipdevs/app}
     environment:
       - HTTP_ENABLED=true
       - GRPC_ENABLED=true
