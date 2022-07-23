@@ -71,6 +71,12 @@ jobs:
     - name: Execute publish script
       shell: bash
       run: ./script-delivery-ps/authoring/publish/publish.ps1
+      env:
+        # Docker
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+        # Node.Js
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Execute tag script
       shell: bash
