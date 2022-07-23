@@ -1,4 +1,4 @@
-name: Pip.Services TestDelivery Nodex
+name: Pip.Services Delivery Nodex
 
 # Cofigure trigger rules
 on: 
