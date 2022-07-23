@@ -1,5 +1,5 @@
 {
-    "name":  "service-example-node",
+    "name":  "service-email-node",
     "type": "microservice",
     "language": "node",
     "version": "1.0.0",
