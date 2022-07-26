@@ -4,5 +4,6 @@
 /data/*
 !/data/dummy.txt
 /obj/test
+/package-lock.json
 /docker/id_rsa*
-package-lock.json
+/docker/.npmrc
