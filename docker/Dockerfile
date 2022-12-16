@@ -21,12 +21,6 @@ RUN npm install
 # Copy entire project
 COPY . .
 
-# set default environment variables
-ENV MONGO_SERVICE_URI ""
-ENV MONGO_SERVICE_HOST mongo
-ENV MONGO_SERVICE_PORT 27017
-ENV MONGO_DB app
-
 EXPOSE 8080
 EXPOSE 8090
 
