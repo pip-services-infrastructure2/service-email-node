@@ -5,7 +5,7 @@ import { Descriptor } from 'pip-services3-commons-nodex';
 import { References } from 'pip-services3-commons-nodex';
 
 import { EmailController } from '../../../src/logic/EmailController';
-import { EmailHttpServiceV1 } from '../../../src/services/version1/EmailHttpServiceV1';
+import { EmailCommandableHttpServiceV1 } from '../../../src/services/version1/EmailCommandableHttpServiceV1';
 
 let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
@@ -13,8 +13,8 @@ let httpConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('EmailHttpServiceV1', ()=> {
-    let service: EmailHttpServiceV1;
+suite('EmailCommandableHttpServiceV1', ()=> {
+    let service: EmailCommandableHttpServiceV1;
 
     let rest: any;
 
@@ -24,12 +24,12 @@ suite('EmailHttpServiceV1', ()=> {
             'options.disabled', true
         ));
 
-        service = new EmailHttpServiceV1();
+        service = new EmailCommandableHttpServiceV1();
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
             new Descriptor('service-email', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-email', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-email', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
